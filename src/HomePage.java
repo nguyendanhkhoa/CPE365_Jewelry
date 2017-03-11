@@ -4,25 +4,23 @@ import java.awt.*;
 public class HomePage {
 	private JFrame frame = new JFrame();
 	public HomePage() {
-		JButton createPiece = new JButton("Create Jewelry Piece");
+		JButton createJewelry = new JButton("Create Jewelry");
 		JButton makePayment = new JButton("Make Payment");
 		JButton logout = new JButton("Logout");
 		
-		createPiece.setBounds(50,50,150,50);
-		createPiece.setLocation(175,65);
-		frame.add(createPiece);
+		createJewelry.setBounds(275,160,260,70);
+		frame.add(createJewelry);
 		
-		makePayment.setBounds(50,50,150,50);
-		makePayment.setLocation(175,140);
+		makePayment.setBounds(275,290,260,70);
 		frame.add(makePayment);
 		
 		logout.setBounds(20,20,50,20);
-		logout.setLocation(440, 10);
+		logout.setLocation(740, 10);
 		frame.add(logout);
 		
 		frame.setTitle("Home");
 		
-		frame.setSize(500,300);
+		frame.setSize(800,600);
 		frame.setLocation(600,200);
 		frame.setLayout(null);
 		frame.setVisible(true);
