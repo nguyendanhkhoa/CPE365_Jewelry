@@ -10,8 +10,8 @@ public class Main {
 		//LandingPage lp = new LandingPage();
 		//new LandingPage();
 		new HomePage();
-		Thread.sleep(5000); //Sleep for 5 seconds
 		//crp.closeFrame(); // Close the registration window!
+//		CustomerRegistrationPage crp = new CustomerRegistrationPage();
 	}
 
 }

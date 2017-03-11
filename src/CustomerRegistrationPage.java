@@ -21,10 +21,33 @@ public class CustomerRegistrationPage {
             setForeground(Color.BLACK);
         }});
         top.add( new JTextField(10) );
+
+        top.add( new JLabel("Enter an username:"){{
+            setForeground(Color.BLACK);
+        }});
+        top.add( new JTextField(10) );
+
+        top.add( new JLabel("Address:"){{
+            setForeground(Color.BLACK);
+        }});
+        top.add( new JTextField(10) );
+
+        top.add( new JLabel("Phone Number:"){{
+            setForeground(Color.BLACK);
+        }});
+        top.add( new JTextField(10) );
+
+        JButton back = new JButton("Back");
+        JButton confirm = new JButton("Confirm");
+
+        top.add(back);
+        top.add(confirm);
+
+
         f.add( top );
 
-//        f.setSize(1400,800);//400 width and 500 height
-        f.pack();
+        f.setSize(1400,800);//400 width and 500 height
+//        f.pack();
 
         f.setVisible(true);//making the frame visible
     }
