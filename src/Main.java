@@ -1,7 +1,3 @@
-import javax.swing.*;
-
-import java.awt.*;
-
 public class Main {
 
 	//@SuppressWarnings("deprecation")
@@ -9,9 +5,9 @@ public class Main {
 		//CustomerRegistrationPage crp = new CustomerRegistrationPage();
 		//LandingPage lp = new LandingPage();
 		//new LandingPage();
-		new HomePage();
+//		new HomePage();
 		//crp.closeFrame(); // Close the registration window!
-//		CustomerRegistrationPage crp = new CustomerRegistrationPage();
+		CustomerRegistrationPage crp = new CustomerRegistrationPage();
 	}
 
 }
