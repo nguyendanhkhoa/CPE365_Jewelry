@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by khoanguyen1 on 3/7/17.
@@ -63,6 +65,20 @@ public class CustomerRegistrationPage {
         //Register Button
         JButton register = new JButton("Register");
         register.setBounds(450,375,100,50); //x, y, width, height
+
+        register.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                String nameFieldText = nameField.getText();
+                String userFieldText = userField.getText();
+                String addressFieldText = addressField.getText();
+                String numberFieldText = numberField.getText();
+
+                System.out.println(nameFieldText + "\n" + userFieldText + "\n" +
+                                    addressFieldText + "\n" + numberFieldText + "\n");
+
+            }
+        });
+
         f.add(register);
 
         f.setSize(800,600);
