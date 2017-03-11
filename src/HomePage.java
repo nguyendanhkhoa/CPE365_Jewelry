@@ -1,5 +1,8 @@
 import javax.swing.*;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class HomePage {
 	private JFrame frame = new JFrame();
@@ -17,6 +20,12 @@ public class HomePage {
 		logout.setBounds(20,20,50,20);
 		logout.setLocation(740, 10);
 		frame.add(logout);
+		
+        logout.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+            	new LandingPage();
+            }
+        });
 		
 		frame.setTitle("Home");
 		
