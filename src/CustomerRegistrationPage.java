@@ -59,6 +59,13 @@ public class CustomerRegistrationPage {
 
         //back Button
         JButton back = new JButton("Back");
+        back.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                new LandingPage();
+                f.setVisible(false);
+                f.dispose();
+            }
+        });
         back.setBounds(250,375,100,50); //x, y, width, height
         f.add(back);
 

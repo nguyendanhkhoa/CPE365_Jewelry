@@ -60,6 +60,11 @@ public class LandingPage extends JFrame {
 		frame.setLayout(null);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}	
+	}
+
+	public void setFrameVisible(boolean isVisible){
+		frame.setVisible(isVisible);
+
+	}
 
 }
