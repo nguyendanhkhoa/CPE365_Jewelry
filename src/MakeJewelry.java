@@ -103,10 +103,14 @@ public class MakeJewelry {
                     con.close();
 
                 }catch(Exception ex){ System.out.println(ex);}
+
+                new HomePage(user);
+                frame.setVisible(false);
+                frame.dispose();
             }
         });
 
-        frame.setTitle("Home");
+        frame.setTitle("Make Jewelry");
 
         frame.setSize(800,600);
         frame.setLocation(600,200);
@@ -162,7 +166,6 @@ public class MakeJewelry {
         }
 
     }
-
 
     private class Jew{
         private String jew;

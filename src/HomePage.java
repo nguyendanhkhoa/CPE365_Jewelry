@@ -14,6 +14,14 @@ public class HomePage {
 		createJewelry.setBounds(275,160,260,70);
 		frame.add(createJewelry);
 
+		makePayment.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				new Payment(user);
+				frame.setVisible(false); // close current window
+				frame.dispose();
+			}
+		});
+
 		createJewelry.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				new MakeJewelry(user);
