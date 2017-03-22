@@ -87,8 +87,8 @@ public class CustomerRegistrationPage {
                     Connection con= DriverManager.getConnection(
                             "jdbc:mysql://cslvm74.csc.calpoly.edu/knguy202","knguy202","diamond");
                     Statement stmt=con.createStatement();
-                    stmt.executeUpdate("Insert into Customers (name, address, phone, login_name) Values ('"+
-                            nameFieldText +"', '"+ addressFieldText +"', '"+ numberFieldText + "', '"+ userFieldText +"')");
+                    stmt.executeUpdate("Insert into Customers (login_name, name, address, phone) Values ('"+ userFieldText + "', '" +
+                            nameFieldText +"', '"+ addressFieldText +"', '"+ numberFieldText +"')");
                     stmt.close();
                     con.commit();
                     con.close();

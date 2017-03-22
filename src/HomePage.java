@@ -13,7 +13,15 @@ public class HomePage {
 		
 		createJewelry.setBounds(275,160,260,70);
 		frame.add(createJewelry);
-		
+
+		createJewelry.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				new MakeJewelry(user);
+				frame.setVisible(false); // close current window
+				frame.dispose();
+			}
+		});
+
 		makePayment.setBounds(275,290,260,70);
 		frame.add(makePayment);
 		
