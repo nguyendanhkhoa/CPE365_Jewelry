@@ -19,7 +19,7 @@ public class LandingPage extends JFrame {
         login.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 String saveUsername = usernameText.getText();
-                new HomePage();
+                new HomePage(saveUsername);
                 frame.setVisible(false); // close current window
                 frame.dispose();
                 System.out.println("username: " + saveUsername);

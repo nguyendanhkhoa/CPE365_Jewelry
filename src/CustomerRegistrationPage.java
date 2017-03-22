@@ -1,7 +1,9 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 /**
  * Created by khoanguyen1 on 3/7/17.
@@ -80,8 +82,24 @@ public class CustomerRegistrationPage {
                 String addressFieldText = addressField.getText();
                 String numberFieldText = numberField.getText();
 
+                try{
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection con= DriverManager.getConnection(
+                            "jdbc:mysql://cslvm74.csc.calpoly.edu/knguy202","knguy202","diamond");
+                    Statement stmt=con.createStatement();
+                    stmt.executeUpdate("Insert into Customers (name, address, phone, login_name) Values ('"+
+                            nameFieldText +"', '"+ addressFieldText +"', '"+ numberFieldText + "', '"+ userFieldText +"')");
+                    stmt.close();
+                    con.commit();
+                    con.close();
+                }catch(Exception e){ System.out.println(e);}
+
                 System.out.println(nameFieldText + "\n" + userFieldText + "\n" +
                                     addressFieldText + "\n" + numberFieldText + "\n");
+
+                new HomePage(userFieldText);
+                f.setVisible(false);
+                f.dispose();
 
             }
         });

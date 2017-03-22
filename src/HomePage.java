@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 public class HomePage {
 	private JFrame frame = new JFrame();
-	public HomePage() {
+	public HomePage(String user) {
 		JButton createJewelry = new JButton("Create Jewelry");
 		JButton makePayment = new JButton("Make Payment");
 		JButton logout = new JButton("Logout");
@@ -23,7 +23,9 @@ public class HomePage {
 		
         logout.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae){
-            	new LandingPage();
+            	frame.setVisible(false);
+				frame.dispose();
+				new LandingPage();
             }
         });
 		
