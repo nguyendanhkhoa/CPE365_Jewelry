@@ -12,14 +12,25 @@ import java.util.ArrayList;
  */
 public class MakeJewelry {
     private JFrame frame;
+    ArrayList<Jew> Jew = new ArrayList<>();
+    ArrayList<Gem> Gem = new ArrayList<>();
+    ArrayList<Metal> Metal = new ArrayList<>();
+
     public MakeJewelry(String user) {
         frame = new JFrame();
         JButton logout = new JButton("Logout");
         JButton finalize = new JButton("Finalize");
+        JButton back = new JButton("Back");
+        back.setBounds(10,10,50,20);
+        frame.add(back);
 
-        ArrayList<Jew> Jew = new ArrayList<>();
-        ArrayList<Gem> Gem = new ArrayList<>();
-        ArrayList<Metal> Metal = new ArrayList<>();
+        back.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                new HomePage(user);
+                frame.setVisible(false);
+                frame.dispose();
+            }
+        });
 
         try{
             Class.forName("com.mysql.jdbc.Driver");

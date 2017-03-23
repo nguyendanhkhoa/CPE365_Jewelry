@@ -22,6 +22,7 @@ public class Payment {
     public Payment(String user) {
 
         frame = new JFrame();
+
         JButton logout = new JButton("Logout");
         JButton payNow = new JButton("Pay now and return to Home Page");
 
@@ -29,6 +30,17 @@ public class Payment {
         JRadioButton cash = new JRadioButton("Cash");
         JRadioButton check = new JRadioButton("Check");
 
+        JButton back = new JButton("Back");
+        back.setBounds(10,10,50,20);
+        frame.add(back);
+
+        back.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                new HomePage(user);
+                frame.setVisible(false);
+                frame.dispose();
+            }
+        });
 
         ButtonGroup group = new ButtonGroup();
         group.add(credit);
