@@ -17,42 +17,48 @@ public class Payment {
     ArrayList<Jew> Jew = new ArrayList<>();
     ArrayList<Gem> Gem = new ArrayList<>();
     ArrayList<Metal> Metal = new ArrayList<>();
+    String paymentType;
 
     public Payment(String user) {
+
         frame = new JFrame();
         JButton logout = new JButton("Logout");
         JButton payNow = new JButton("Pay now and return to Home Page");
 
-        JRadioButton creditCard = new JRadioButton("Credit Card");
+        JRadioButton credit = new JRadioButton("Credit");
         JRadioButton cash = new JRadioButton("Cash");
         JRadioButton check = new JRadioButton("Check");
-        final String[] paymentType = {""};
+
 
         ButtonGroup group = new ButtonGroup();
-        group.add(creditCard);
+        group.add(credit);
         group.add(cash);
         group.add(check);
 
-        creditCard.setBounds(350,380,250,70);  //***
-        cash.setBounds(350,380,250,70);  //***
-        check.setBounds(350,380,250,70);  //***
-        frame.add(creditCard);
+        credit.setBounds(240,380,100,70);  //***
+        cash.setBounds(365,380,100,70);  //***
+        check.setBounds(465,380,100,70);  //***
+        frame.add(credit);
         frame.add(cash);
         frame.add(check);
 
-        creditCard.addActionListener(new ActionListener() {
+
+        credit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                paymentType[0] = "Credit Card";
+                paymentType = "Credit";
+                System.out.println("payment type: " + paymentType);
              }
         });
         cash.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                paymentType[0] = "Credit Card";
+                paymentType = "Cash";
+                System.out.println("payment type: " + paymentType);
             }
         });
         check.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                paymentType[0] = "Credit Card";
+                paymentType = "Check";
+                System.out.println("payment type: " + paymentType);
             }
         });
 
@@ -91,15 +97,15 @@ public class Payment {
         }
         orderTable += "-------------------------------------------------<br>";
         orderTable += String.format("$%.2f - Total</html>", calcTotalPrice(orders));
-        System.out.println(orderTable);
+        //System.out.println(orderTable);
 
-        JLabel unpaidOrders = new JLabel("Unpaid Orders for " + user);
+        JLabel unpaidOrders = new JLabel("Unpaid Orders for user '" + user + "'");
         JLabel dottedLine = new JLabel("<html>-------------------------------------------------<br></html>");
         JLabel displayOrders = new JLabel(orderTable);
 
-        unpaidOrders.setBounds(300, -40, 300, 300);
-        dottedLine.setBounds(300, -20, 300, 300);
-        displayOrders.setBounds(300, 80, 300, 300);
+        unpaidOrders.setBounds(275, -40, 300, 300);
+        dottedLine.setBounds(275, -20, 300, 300);
+        displayOrders.setBounds(275, 80, 300, 300);
         frame.add(unpaidOrders);
         frame.add(dottedLine);
         frame.add(displayOrders);
@@ -115,7 +121,7 @@ public class Payment {
             }
         });
 
-        payNow.setBounds(270,350,250,70);  //***
+        payNow.setBounds(275,450,250,70);  //***
         frame.add(payNow);
 
         payNow.addActionListener(new ActionListener() {
@@ -127,11 +133,11 @@ public class Payment {
                             "jdbc:mysql://cslvm74.csc.calpoly.edu/knguy202", "knguy202", "diamond");
                     Statement stmt = con.createStatement();
 
-                    for (int i = 0; i < orders.size(); i++) {
-                        stmt.executeUpdate("update Orders set paid = TRUE where o_id = " + orders.get(i).o_id);
+                    //for (int i = 0; i < orders.size(); i++) {
+                        stmt.executeUpdate("update Orders set paid = TRUE where login_name = '" + user + "'");
                         stmt.executeUpdate("insert into Payment(login_name, type, amount, date) values('"+
-                                user+"', '"+paymentType[0]+"', "+orders.get(i).price+", '"+LocalDate.now()+"')");
-                    }
+                                user+"', '" + paymentType +"', "+calcTotalPrice(orders)+", '"+LocalDate.now()+"')");
+                   // }
 
                     stmt.close();
                     con.close();
@@ -142,6 +148,7 @@ public class Payment {
                 frame.dispose();
             }
         });
+
 
         frame.setTitle("Payment");
 
