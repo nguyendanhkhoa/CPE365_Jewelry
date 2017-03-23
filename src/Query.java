@@ -12,11 +12,26 @@ public class Query {
         frame = new JFrame();
         JLabel facts = new JLabel("Facts:");
         JButton freqPayType = new JButton("Most Frequent Payment Type");
-        JButton mostOrderedItem = new JButton("Most Ordered Item");
+        JButton mostOrderedJew = new JButton("Most Popular Jewelry");
+        JButton mostOrderedMetal = new JButton("Most Popular Metal");
+        JButton mostOrderedGem = new JButton("Most Popular Gem");
+
+        JButton mostValueableCustomer = new JButton("Most Valuable Customer");
+
+
         JButton back = new JButton("Back");
 
-        mostOrderedItem.setBounds(100,300,132,35);
-        frame.add(mostOrderedItem);
+        mostOrderedJew.setBounds(100,300,180,35);
+        frame.add(mostOrderedJew);
+
+        mostOrderedMetal.setBounds(100,380,180,35);
+        frame.add(mostOrderedMetal);
+
+        mostOrderedGem.setBounds(100,460,180,35);
+        frame.add(mostOrderedGem);
+
+        mostValueableCustomer.setBounds(325,380,200,35);
+        frame.add(mostValueableCustomer);
 
         freqPayType.setBounds(325,300,200,35);
         frame.add(freqPayType);
@@ -27,32 +42,32 @@ public class Query {
         facts.setBounds(100,100,300,35);
         frame.add(facts);
 
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con= DriverManager.getConnection(
-                    "jdbc:mysql://cslvm74.csc.calpoly.edu/knguy202","knguy202","diamond");
-            Statement stmt=con.createStatement();
-            freqPayType.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    try {
-                        ResultSet rsJew = stmt.executeQuery("SELECT type\n" +
-                                "FROM payType\n" +
-                                "WHERE cnt = (SELECT MAX(cnt) FROM payType);");
-                        while(rsJew.next()){
-                            System.out.println(rsJew.getString(1) + "   " + rsJew.getInt(2));
-                        }
+//        try{
+//            Class.forName("com.mysql.jdbc.Driver");
+//            Connection con= DriverManager.getConnection(
+//                    "jdbc:mysql://cslvm74.csc.calpoly.edu/knguy202","knguy202","diamond");
+//            Statement stmt=con.createStatement();
+//            freqPayType.addActionListener(new ActionListener() {
+//                @Override
+//                public void actionPerformed(ActionEvent e) {
+//                    try {
+//                        ResultSet rsJew = stmt.executeQuery("SELECT type\n" +
+//                                "FROM payType\n" +
+//                                "WHERE cnt = (SELECT MAX(cnt) FROM payType);");
+//                        while(rsJew.next()){
+//                            System.out.println(rsJew.getString(1) + "   " + rsJew.getInt(2));
+//                        }
+//
+//                        stmt.close();
+//                        con.close();
+//
+//                    } catch (SQLException e1) {
+//                        e1.printStackTrace();
+//                    }
+//                }
+//            });
 
-                        stmt.close();
-                        con.close();
-
-                    } catch (SQLException e1) {
-                        e1.printStackTrace();
-                    }
-                }
-            });
-
-        }catch(Exception e){ System.out.println(e);}
+//        }catch(Exception e){ System.out.println(e);}
 
         back.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae){
