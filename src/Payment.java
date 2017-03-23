@@ -135,7 +135,7 @@ public class Payment {
 
                     //for (int i = 0; i < orders.size(); i++) {
                         stmt.executeUpdate("update Orders set paid = TRUE where login_name = '" + user + "'");
-                        stmt.executeUpdate("insert into Payment(login_name, type, amount, date) values('"+
+                        stmt.executeUpdate("insert into Payments(login_name, type, amount, date) values('"+
                                 user+"', '" + paymentType +"', "+calcTotalPrice(orders)+", '"+LocalDate.now()+"')");
                    // }
 
@@ -148,7 +148,7 @@ public class Payment {
                 frame.dispose();
             }
         });
-
+System.out.println(LocalDate.now());
 
         frame.setTitle("Payment");
 
