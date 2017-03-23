@@ -10,7 +10,8 @@ public class HomePage {
 		JButton createJewelry = new JButton("Create Jewelry");
 		JButton makePayment = new JButton("Make Payment");
 		JButton logout = new JButton("Logout");
-		
+
+
 		createJewelry.setBounds(275,160,260,70);
 		frame.add(createJewelry);
 

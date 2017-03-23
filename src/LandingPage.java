@@ -13,8 +13,8 @@ public class LandingPage extends JFrame {
 		JButton logout = new JButton("Logout");
 		final JTextField usernameText = new JTextField(0);
 		JLabel username = new JLabel("Username:");
-		
-		
+		JButton query = new JButton("Interesting Facts");
+
 
         login.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
@@ -39,15 +39,30 @@ public class LandingPage extends JFrame {
                 frame.dispose();
             }
         });
+
+
+		query.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Query();
+				frame.setVisible(false); // close current window
+				frame.dispose();
+			}
+		});
 		
         username.setBounds(255,180,100,35);
 		frame.add(username);
+
 		usernameText.setBounds(325,180,200,35);
         frame.add(usernameText);
+
 		login.setBounds(325,240,132,35);
 		frame.add(login);
-		
-		newCustomer.setBounds(325,350,132,35);
+
+		query.setBounds(325, 350,132,35);
+		frame.add(query);
+
+		newCustomer.setBounds(325,300,132,35);
 		frame.add(newCustomer);
 		
 		logout.setBounds(740,10,50,20);

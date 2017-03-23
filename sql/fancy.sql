@@ -19,41 +19,42 @@ WHERE Gems.g_id = Y.gem AND Y.cnt = M.max;
 
 DROP VIEW Y;
 DROP VIEW M;
-
-CREATE VIEW Y AS (
+-- FAMOUS METAL
+CREATE VIEW Y2 AS (
   SELECT
     metal,
     count(*) AS cnt
   FROM Orders
   GROUP BY metal);
 
-CREATE VIEW M AS (
+CREATE VIEW M2 AS (
   SELECT max(cnt) AS max
-  FROM Y
+  FROM Y2
 );
 
 SELECT name
-FROM M, Metals, Y
-WHERE Metals.m_id = Y.metal AND Y.cnt = M.max;
+FROM M2, Metals, Y2
+WHERE Metals.m_id = Y2.metal AND Y2.cnt = M2.max;
 
 DROP VIEW Y;
 DROP VIEW M;
 
-CREATE VIEW Y AS (
+--FAMOUS JEWELRY
+CREATE VIEW Y3 AS (
   SELECT
     jewelry,
     count(*) AS cnt
   FROM Orders
   GROUP BY jewelry);
 
-CREATE VIEW M AS (
+CREATE VIEW M3 AS (
   SELECT max(cnt) AS max
-  FROM Y
+  FROM Y3
 );
 
 SELECT name
-FROM M, Jewelry, Y
-WHERE Jewelry.j_id = Y.jewelry AND Y.cnt = M.max;
+FROM M3, Jewelry, Y3
+WHERE Jewelry.j_id = Y3.jewelry AND Y3.cnt = M3.max;
 
 DROP VIEW Y;
 DROP VIEW M;
@@ -74,8 +75,14 @@ WHERE spent = (SELECT max(spent)
 DROP VIEW X;
 
 /*most frequent payment type*/
-SELECT
+
+CREATE VIEW payType AS
+(SELECT
   P.type,
-  count(*)
+  count(*) AS cnt
 FROM Payments AS P
-GROUP BY P.type;
+GROUP BY P.type);
+
+SELECT type
+FROM payType
+WHERE cnt = (SELECT MAX(cnt) FROM payType);
